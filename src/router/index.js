@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import EventCreate from '../views/EventCreate.vue'
 import EventList from '../views/EventList.vue'
 import EventShow from '../views/EventShow.vue'
+import User from '../views/User.vue'
 
 Vue.use(VueRouter)
 
@@ -13,9 +14,16 @@ const routes = [
     component: EventList
   },
   {
-    path: '/event',
+    path: '/event/:id',
     name: 'event-show',
-    component: EventShow
+    component: EventShow,
+    props: true
+  },
+  {
+    path: '/user/:username',
+    name: 'user',
+    component: User,
+    props: true
   },
   {
     path: '/event/create',
@@ -23,8 +31,8 @@ const routes = [
     component: EventCreate
   }
 ]
-
 const router = new VueRouter({
+  // This removes the hash in the URL
   mode: 'history',
   base: process.env.BASE_URL,
   routes
